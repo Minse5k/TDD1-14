@@ -19,6 +19,9 @@ public class Calc {
             case "-" -> {
                 return calc(parts, idx-2) - Integer.parseInt(parts[idx]);
             }
+            case "*" -> {
+                return calc(parts, idx-2) * Integer.parseInt(parts[idx]);
+            }
         }
 
         return 0;
