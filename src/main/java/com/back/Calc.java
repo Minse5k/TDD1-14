@@ -2,22 +2,22 @@ package com.back;
 
 public class Calc {
     public static int run(String expression) {
-        String[] str = expression.split(" ");
+        String[] parts = expression.split(" ");
 
-        return calc(str, str.length-1);
+        return calc(parts, parts.length-1);
     }
 
-    private static int calc(String[] s, int n) {
-        if(n==0) {
-            return Integer.parseInt(s[0]);
+    private static int calc(String[] parts, int idx) {
+        if(idx==0) {
+            return Integer.parseInt(parts[0]);
         }
 
-        switch (s[n-1]) {
+        switch (parts[idx-1]) {
             case "+" -> {
-                return calc(s, n-2) + Integer.parseInt(s[n]);
+                return calc(parts, idx-2) + Integer.parseInt(parts[idx]);
             }
             case "-" -> {
-                return calc(s, n-2) - Integer.parseInt(s[n]);
+                return calc(parts, idx-2) - Integer.parseInt(parts[idx]);
             }
         }
 
