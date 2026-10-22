@@ -3,13 +3,24 @@ package com.back;
 public class Calc {
     public static int run(String expression) {
         String[] str = expression.split(" ");
-        int result = 0;
 
-        switch (str[1]) {
-            case "+" -> result = Integer.parseInt(str[0]) + Integer.parseInt(str[2]);
-            case "-" -> result = Integer.parseInt(str[0]) - Integer.parseInt(str[2]);
+        return calc(str, str.length-1);
+    }
+
+    private static int calc(String[] s, int n) {
+        if(n==0) {
+            return Integer.parseInt(s[0]);
         }
 
-        return result;
+        switch (s[n-1]) {
+            case "+" -> {
+                return calc(s, n-2) + Integer.parseInt(s[n]);
+            }
+            case "-" -> {
+                return calc(s, n-2) - Integer.parseInt(s[n]);
+            }
+        }
+
+        return 0;
     }
 }
